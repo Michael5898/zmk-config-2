@@ -96,12 +96,12 @@ Based on the schematic (Macropad_v19.sch):
 - **Encoder Left (EN1)**:
   - A: P1.12 (D7)
   - B: P1.13 (D8)
-  - Button: Connected via D11 to matrix at RC(1,3)
+  - Button: Connected via diode to matrix at Col 3 (P0.02/D0), Row 1
 
 - **Encoder Right (EN2)**:
   - A: P1.14 (D9)
   - B: P1.15 (D10)
-  - Button: Connected via D10 to matrix at RC(0,3)
+  - Button: Connected via diode to matrix at Col 3 (P0.02/D0), Row 0
 
 ## Configuration Files
 
