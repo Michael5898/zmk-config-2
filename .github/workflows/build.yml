@@ -10,48 +10,5 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container:
-      image: zmkfirmware/zmk-build-arm:stable
-    name: Build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
 
-      - name: Cache west modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-zephyr-modules
-        with:
-          path: |
-            modules/
-            tools/
-            zephyr/
-            bootloader/
-            zmk/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('config/west.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: West Init
-        run: west init -l config
-
-      - name: West Update
-        run: west update
-
-      - name: West Zephyr export
-        run: west zephyr-export
-
-      - name: West Build (xiao_ble macropad)
-        run: west build -s zmk/app -b xiao_ble -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" -DSHIELD=macropad
-
-      - name: Rename UF2
-        run: cp build/zephyr/zmk.uf2 macropad-xiao_ble-zmk.uf2
-
-      - name: Archive firmware
-        uses: actions/upload-artifact@v4
-        with:
-          name: macropad-firmware
-          path: macropad-xiao_ble-zmk.uf2
