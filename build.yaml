@@ -1,0 +1,5 @@
+# Build configuration for ZMK macropad firmware
+---
+include:
+  - board: xiao_ble
+    shield: macropad
