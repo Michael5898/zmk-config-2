@@ -1,0 +1,10 @@
+file_format: "1"
+id: macropad
+name: Custom Macropad
+type: shield
+url: https://github.com/Michael5898/zmk-config-2
+requires: [seeed_xiao]
+features:
+  - keys
+  - encoder
+exposes: []

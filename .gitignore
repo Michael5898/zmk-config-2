@@ -1,0 +1,22 @@
+# Build artifacts
+build/
+*.uf2
+
+# West workspace
+.west/
+modules/
+tools/
+zephyr/
+bootloader/
+zmk/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
